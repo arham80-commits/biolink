@@ -1,0 +1,59 @@
+{
+    "hero": {
+      "titlePart1": "LAB",
+      "titlePart2": "SPACES",
+      "subtitle": "Trouvez des espaces/labs pour votre startup",
+      "imageAlt": "Espace lab {{number}}"
+    },
+    "navbar": {
+        "home": "Accueil",
+        "links": "Liens",
+        "faq": "FAQ",
+        "languageSelector": "Choisir la langue"
+      },
+      "filterBar": {
+    "regions": "Régions",
+    "labos": "Laboratoires",
+    "structures": "Type de structure",
+    "fetchError": "Erreur lors de la récupération des données de filtre :",
+    "noRegion": "Aucune information de région",
+    "noLabos": "Aucune information de labo",
+    "noStructure": "Aucun type"
+  },
+  "labCard": {
+    "editButton": "Modifier le lab",
+    "region": "Région",
+    "noRegion": "Aucune information de région",
+    "labos": "Laboratoires",
+    "noLabos": "Aucune information de labo",
+    "structure": "Type de structure",
+    "noStructure": "Aucun type"
+  },
+  "labDetail": {
+    "description": "Ceci est une description de l'espace laboratoire. Vous pouvez ajouter plus de détails ici.",
+    "requestPlaceholder": "Entrez votre demande",
+    "alterButton": "Modifier",
+    "structureType": "Type de structure",
+    "labType": "Type de laboratoire à louer",
+    "application": "Comment postuler",
+    "offerType": "Type d'offre",
+    "surfaceTotal": "Surface Totale",
+    "surfaceMin": "Surface min de location",
+    "surfaceMax": "Surface max de location",
+    "durationMax": "Durée max de location",
+    "technicalServices": "Services Techniques Communs",
+    "facilityServices": "Services Communs de Gestion",
+    "months": "mois"
+  },
+    "drawer": {
+      "editLab": "Modifier Lab",
+      "editing": "Vous modifiez",
+      "contactEmail": "Email de contact",
+      "labName": "Nom du Lab",
+      "updateButton": "Mettre à jour",
+      "emailError": "L'email ne correspond pas à l'email de contact du lab",
+      "updateSuccess": "Données du lab mises à jour avec succès!",
+      "updateError": "Échec de la mise à jour des données du lab",
+      "emailSendError": "Échec de l'envoi de l'email"
+    }
+  }
