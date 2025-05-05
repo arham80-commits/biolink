@@ -52,13 +52,13 @@ export default function FilterBar({ onFiltersChange }) {
 
   return (
     <SectionWrapper>
-      <div className="flex flex-col gap-4 w-full sm:flex-row sm:justify-between sm:items-center sm:gap-6">
+      <div className="flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-4 w-full items-start md:items-center">
         
-        {/* LEFT: Filters group */}
-        <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-4 w-full">
-          
+        {/* Filters Group */}
+        <div className="flex flex-col md:flex-row md:flex-wrap gap-4 flex-1">
+
           {/* Region */}
-          <div className="relative w-full sm:w-40">
+          <div className="relative w-full md:w-[180px]">
             <MapPin className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4" />
             <select
               value={selectedRegion}
@@ -77,7 +77,7 @@ export default function FilterBar({ onFiltersChange }) {
           </div>
 
           {/* Labos */}
-          <div className="relative w-full sm:w-40">
+          <div className="relative w-full md:w-[180px]">
             <Microscope className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4" />
             <select
               value={selectedLabo}
@@ -96,7 +96,7 @@ export default function FilterBar({ onFiltersChange }) {
           </div>
 
           {/* Structures */}
-          <div className="relative w-full sm:w-48">
+          <div className="relative w-full md:w-[180px]">
             <Building2 className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4" />
             <select
               value={selectedStructure}
@@ -114,7 +114,6 @@ export default function FilterBar({ onFiltersChange }) {
             <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
           </div>
           <div className="w-px h-10 bg-[#E3E3E3] mx-2 hidden sm:block" />
-
           {/* Checkbox Filter */}
           <div
             className={`relative flex items-center justify-between gap-2 px-4 py-2 cursor-pointer border border-[#E3E3E3] ${
@@ -171,10 +170,10 @@ export default function FilterBar({ onFiltersChange }) {
           </div>
         </div>
 
-        {/* RIGHT: Ajouter un lieu Button */}
-        <div className="flex justify-center sm:justify-end w-full">
+        {/* Add Button */}
+        <div className="w-full md:w-auto flex justify-center md:justify-end">
           <button
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 border border-[#E3E3E3] bg-white text-gray-800 rounded-full hover:bg-gray-100 transition-all duration-200"
+            className="w-full md:w-auto flex items-center justify-center gap-2 px-4 py-2 border border-[#E3E3E3] bg-white text-gray-800 rounded-full hover:bg-gray-100 transition-all duration-200"
           >
             <PlusCircle className="w-4 h-4 text-gray-800" />
             <span className="text-sm font-medium">
