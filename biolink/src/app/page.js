@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { fetchLabSpaces } from '@/app/lib/airtable';
-import LabCard from '@/app/components/cards/LabCard';
 import Navbar from './components/Navbar/Navbar';
 import HeroSection from './heroSection/HeroSection';
 import FilterBar from './FilterBar';
 import Loader from './components/Loader'; 
 import dynamic from 'next/dynamic';
 import SectionWrapper from './components/SectionWrapper';
+import LabCard from './components/cards/LabCard';
 const Maps = dynamic(() => import('./components/Maps'), { ssr: false });
 
 export default function Home() {

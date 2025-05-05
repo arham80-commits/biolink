@@ -33,7 +33,7 @@ export default function LabCard({ lab: initialLab }) {
     <>
       {toast.show && <Toast message={toast.message} type={toast.type} />}
 
-      <div className="bg-white rounded-lg overflow-hidden transition-shadow p-2 flex flex-col h-full relative" style={{ boxShadow: '0px 1px 1px 1px rgba(0, 0, 0, 0.15)' }}>
+      <div className="bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg overflow-hidden transition-shadow p-2 flex flex-col h-full relative" style={{ boxShadow: '0px 1px 1px 1px rgba(0, 0, 0, 0.15)' }}>
         <div className="relative h-40 w-full mb-4 rounded-md overflow-hidden" onClick={() => setOpenDetailDrawer(true)}
         >
           {/* <Link href={`/labs/${lab.id}`} className="block h-full w-full"> */}
@@ -59,7 +59,7 @@ export default function LabCard({ lab: initialLab }) {
           <h3 className="text-[15.42px] font-bold mb-2 truncate">{lab.name}</h3>
 
           <div className="mb-2">
-            <p className="text-[11px] font-medium text-[#56575B] mb-1">
+            <p className="text-[11px] font-medium text-[#56575B] dark:text-white mb-1">
               {t('labCard.region')}
             </p>
             <span
@@ -74,7 +74,7 @@ export default function LabCard({ lab: initialLab }) {
           </div>
 
           <div className="mb-2">
-            <p className="text-[11px] font-medium text-[#56575B] mb-1">
+            <p className="text-[11px] font-medium text-[#56575B] dark:text-white mb-1">
               {t('labCard.labos')}
             </p>
             <div className="flex flex-wrap gap-2">
@@ -96,7 +96,7 @@ export default function LabCard({ lab: initialLab }) {
           </div>
 
           <div className="mb-2">
-            <p className="text-[11px] font-medium text-[#56575B] mb-1">
+            <p className="text-[11px] font-medium text-[#56575B] dark:text-white mb-1">
               {t('labCard.structure')}
             </p>
             <div className="flex flex-wrap gap-2">
