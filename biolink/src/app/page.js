@@ -8,6 +8,7 @@ import HeroSection from './heroSection/HeroSection';
 import FilterBar from './FilterBar';
 import Loader from './components/Loader'; 
 import dynamic from 'next/dynamic';
+import SectionWrapper from './components/SectionWrapper';
 const Maps = dynamic(() => import('./components/Maps'), { ssr: false });
 
 export default function Home() {
@@ -62,8 +63,7 @@ export default function Home() {
       <HeroSection />
       <Maps/>
       <FilterBar onFiltersChange={handleFiltersChange} />
-      <main className="min-h-screen py-12 bg-gray-50">
-        <div className="container mx-auto md:px-12 lg:px-12 px-4">
+        <SectionWrapper className="">
           {loading ? (
             <Loader />
           ) : filteredLabs.length > 0 ? (
@@ -75,8 +75,7 @@ export default function Home() {
           ) : (
             <p className="text-center text-gray-500">No labs found for selected filters.</p>
           )}
-        </div>
-      </main>
+        </SectionWrapper>
     </>
   );
 }

@@ -7,18 +7,23 @@ import { useState } from "react";
 export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
   const [imageLoading, setImageLoading] = useState(true);
   
-  if (!isOpen) return null;
 
   return (
     <>
       {/* Backdrop */}
-      <div 
-          className="fixed inset-0 bg-black opacity-10 z-40"
-          onClick={onClose}
-      ></div>
+      {isOpen && (
+  <div 
+    className="fixed inset-0 bg-black opacity-10 z-40"
+    onClick={onClose}
+  ></div>
+)}
 
       {/* Drawer Content */}
-      <div className={`fixed top-0 right-0 h-full w-full md:w-[700px] lg:w-[800px] bg-white transform transition-transform duration-300 z-50 overflow-y-auto shadow-xl`}>
+      <div
+  className={`fixed top-0 right-0 h-full w-full md:w-[700px] lg:w-[800px] bg-white z-50 overflow-y-auto  transform transition-transform duration-300 ease-in-out
+    ${isOpen ? "translate-x-0" : "translate-x-full"}
+  `}
+>
         <div className="p-6 md:p-8">
           {/* Close Button - Fixed in top right corner */}
           <div className="flex justify-end mb-4">

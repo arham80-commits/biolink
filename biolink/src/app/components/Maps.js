@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import SectionWrapper from "./SectionWrapper";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -64,8 +65,10 @@ export default function Maps() {
   };
 
   return (
-    <div className="relative w-full h-[70vh] mx-auto md:px-12 px-4 md:py-8 py-4 ">
-      <div className="absolute md:top-16 md:left-24 top-6 left-10 z-[1000] bg-[#d2f1f7]  rounded shadow-md w-72">
+<SectionWrapper className="relative w-full md:h-[70vh] h-[50vh]">
+<div className="absolute z-[1000] bg-[#d2f1f7] rounded shadow-md w-72 
+  md:top-16 md:left-24 top-6 left-1/2 -translate-x-1/2 md:translate-x-0">
+
         <input
           type="text"
           placeholder="Search..."
@@ -105,6 +108,6 @@ export default function Maps() {
         </Marker>
         <ChangeMapView coords={selectedCoords} />
       </MapContainer>
-    </div>
+    </SectionWrapper>
   );
 }

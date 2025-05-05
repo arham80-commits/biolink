@@ -63,7 +63,7 @@ export default function LabCard({ lab: initialLab }) {
               {t('labCard.region')}
             </p>
             <span
-              className={`px-2 py-1 text-xs rounded-full ${
+              className={`px-2 py-1 text-[12px] font-medium rounded-full ${
                 lab.notes
                   ? "bg-green-100 text-green-800"
                   : "bg-red-100 text-red-800"
@@ -82,7 +82,7 @@ export default function LabCard({ lab: initialLab }) {
                 lab.labos.map((item, index) => (
                   <span
                     key={index}
-                    className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800"
+                    className="px-2 py-1 text-[12px] font-medium rounded-full bg-green-100 text-green-800"
                   >
                     {item}
                   </span>
@@ -104,13 +104,13 @@ export default function LabCard({ lab: initialLab }) {
                 lab.lab_de_structure.map((item, index) => (
                   <span
                     key={index}
-                    className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800"
+                    className="px-2 py-1 text-[12px] font-medium rounded-full bg-green-100 text-green-800"
                   >
                     {item}
                   </span>
                 ))
               ) : (
-                <span className="px-2 py-1 text-xs rounded-full bg-red-100 text-red-800">
+                <span className="px-2 py-1 text-[12px] font-medium rounded-full bg-red-100 text-red-800">
                   {t('labCard.noStructure')}
                 </span>
               )}
