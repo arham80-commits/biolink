@@ -29,27 +29,29 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
     try {
       setIsLoading(true);
       setError("");
-
-      // Extract domain from both emails
+  
       const inputDomain = email.split("@")[1];
       const contactDomain = lab["Contact email"].split("@")[1];
-
+  
       if (!inputDomain || !contactDomain || inputDomain !== contactDomain) {
         setError(`Email domain must match ${contactDomain}`);
         setIsLoading(false);
         return;
       }
-
+  
       const updatedData = { Name: name };
+      console.log("Updating lab with data:", updatedData);
+  
       const updatedLab = await updateLabData(lab.id, updatedData);
-
-      // Update local state
+  
+      console.log("Update success:", updatedLab);
+  
       onUpdateSuccess({
         ...lab,
         ...updatedLab.fields,
         id: updatedLab.id,
       });
-
+  
       showToast("Lab name updated successfully!");
       onClose();
     } catch (error) {
@@ -59,6 +61,7 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
       setIsLoading(false);
     }
   };
+  
 
   if (!isOpen) return null;
 
