@@ -2,11 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { Pencil } from "lucide-react";
 import DetailDrawer from "../DetailDrawer";
-import { useTranslation } from "react-i18next";
 import  EditModal  from "../EditModal";
+import { useTranslation } from "../../lib/translate";
 
 export default function LabCard({ lab: initialLab }) {
   const { t } = useTranslation();

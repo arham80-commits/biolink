@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import SectionWrapper from "./components/SectionWrapper";
 import { fetchLabSpaces } from "./lib/airtable";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "./lib/translate";
 
 export default function FilterBar({ onFiltersChange }) {
   const { t } = useTranslation();
