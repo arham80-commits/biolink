@@ -2,8 +2,9 @@
 
 import { X } from "lucide-react";
 import { useState, useEffect } from "react";
-import { updateLabData } from "../lib/airtable";
+import { checkEmailExists } from "../lib/airtable";
 import Toast from "./Toast";
+import emailjs from "@emailjs/browser";
 
 export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
   const [email, setEmail] = useState("");
@@ -17,6 +18,8 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
       setName(lab.Name || lab.name || "");
       setEmail("");
       setError("");
+      // Initialize EmailJS (you only need to do this once)
+      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
     }
   }, [isOpen, lab]);
 
@@ -25,11 +28,37 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
     setTimeout(() => setToast({ show: false, message: "", type: "" }), 3000);
   };
 
+  const sendVerificationEmail = async () => {
+    try {
+      const expirationTime = Date.now() + 24 * 60 * 60 * 1000; // 24 hours from now
+      const verificationLink = `${window.location.origin}/verify-lab-update?labId=${lab.id}&expires=${expirationTime}`;
+
+      const templateParams = {
+        to_email: email,
+        lab_name: lab.name || lab.Name,
+        contact_name: name,
+        verification_link: verificationLink,
+      };
+
+      const response = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        templateParams
+      );
+
+      return response.status === 200;
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      return false;
+    }
+  };
+
   const handleUpdate = async () => {
     try {
       setIsLoading(true);
       setError("");
 
+      // Validate email domain
       const inputDomain = email.split("@")[1];
       const contactDomain = lab["Contact email"].split("@")[1];
 
@@ -39,24 +68,27 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
         return;
       }
 
-      const updatedData = { Name: name };
-      console.log("Updating lab with data:", updatedData);
+      // Check if email exists in Airtable
+      const emailExists = await checkEmailExists(email);
 
-      const updatedLab = await updateLabData(lab.id, updatedData);
+      if (emailExists) {
+        // Send verification email via EmailJS
+        const emailSent = await sendVerificationEmail();
 
-      console.log("Update success:", updatedLab);
-
-      onUpdateSuccess({
-        ...lab,
-        ...updatedLab.fields,
-        id: updatedLab.id,
-      });
-
-      showToast("Lab name updated successfully!");
-      onClose();
+        if (emailSent) {
+          showToast("Verification email sent. Please check your inbox.");
+          onClose();
+        } else {
+          showToast("Failed to send verification email", "error");
+        }
+      } else {
+        setError(
+          "Email not found in our system. Please use a registered email."
+        );
+      }
     } catch (error) {
       console.error("Update failed:", error);
-      showToast("Failed to update lab data", "error");
+      showToast("An error occurred. Please try again.", "error");
     } finally {
       setIsLoading(false);
     }
@@ -80,7 +112,9 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
         >
           <div className="p-6">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Edit Lab</h2>
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+                Edit Lab
+              </h2>
               <button
                 onClick={onClose}
                 className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white"
@@ -117,6 +151,9 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
+              <p className="text-xs text-gray-500 mt-1">
+                Must match the domain of {lab["Contact email"]}
+              </p>
             </div>
 
             {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
@@ -148,10 +185,10 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                     ></path>
                   </svg>
-                  Updating...
+                  Processing...
                 </>
               ) : (
-                "Update Lab Name"
+                "Verify and Update"
               )}
             </button>
           </div>
