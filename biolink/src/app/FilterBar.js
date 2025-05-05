@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { fetchLabSpaces } from "@/app/lib/airtable";
-import { useTranslation } from "@/app/lib/translate";
+// import { fetchLabSpaces } from "@/app/lib/airtable";
 import {
   MapPin,
   Microscope,
@@ -12,6 +11,8 @@ import {
   PlusCircle,
 } from "lucide-react";
 import SectionWrapper from "./components/SectionWrapper";
+import { fetchLabSpaces } from "./lib/airtable";
+import { useTranslation } from "react-i18next";
 
 export default function FilterBar({ onFiltersChange }) {
   const { t } = useTranslation();
