@@ -52,7 +52,8 @@ export default function FilterBar({ onFiltersChange }) {
 
   return (
     <SectionWrapper>
-      <div className="flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-4 w-full items-start md:items-center">
+      <div className="flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-4 w-full items-stretch">
+
         
         {/* Filters Group */}
         <div className="flex flex-col md:flex-row md:flex-wrap gap-4 flex-1">
