@@ -146,3 +146,26 @@ export const updateLabData = async (id, updatedData) => {
 
   return result;
 };
+
+
+// check email exists =  
+
+export const checkEmailExists = async (email) => {
+  const filterFormula = `LOWER({Contact email}) = '${email.toLowerCase()}'`;
+  const url = `${API_URL}?filterByFormula=${encodeURIComponent(filterFormula)}&maxRecords=1`;
+
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${API_KEY}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to check email in Airtable");
+  }
+
+  const data = await response.json();
+
+  return data.records.length > 0;
+};

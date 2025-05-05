@@ -4,11 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Pencil } from "lucide-react";
-import Drawer from "@/app/components/EditModal";
-import { useTranslation } from "@/app/lib/translate";
-import Toast from "@/app/components/Toast";
 import DetailDrawer from "../DetailDrawer";
-import EditModal from "@/app/components/EditModal";
+import { useTranslation } from "react-i18next";
+import  EditModal  from "../EditModal";
 
 export default function LabCard({ lab: initialLab }) {
   const { t } = useTranslation();
@@ -24,26 +22,31 @@ export default function LabCard({ lab: initialLab }) {
 
   const handleUpdateSuccess = (updatedLab) => {
     setLab(updatedLab);
-    showToast(t('labCard.updateSuccess'));
+    showToast(t("labCard.updateSuccess"));
     setOpenEditModal(false);
-    setOpenDetailDrawer(true); 
+    setOpenDetailDrawer(true);
   };
 
   return (
     <>
       {toast.show && <Toast message={toast.message} type={toast.type} />}
 
-      <div className="bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg overflow-hidden transition-shadow p-2 flex flex-col h-full relative" style={{ boxShadow: '0px 1px 1px 1px rgba(0, 0, 0, 0.15)' }}>
-        <div className="relative h-40 w-full mb-4 rounded-md overflow-hidden" onClick={() => setOpenDetailDrawer(true)}
+      <div
+        className="bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg overflow-hidden transition-shadow p-2 flex flex-col h-full relative"
+        style={{ boxShadow: "0px 1px 1px 1px rgba(0, 0, 0, 0.15)" }}
+      >
+        <div
+          className="relative h-40 w-full mb-4 rounded-md overflow-hidden"
+          onClick={() => setOpenDetailDrawer(true)}
         >
           {/* <Link href={`/labs/${lab.id}`} className="block h-full w-full"> */}
-            <Image
-              src={lab.imageUrl || "/image.png"}
-              alt={lab.name || "Lab Image"}
-              fill
-              className="object-cover cursor-pointer"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
+          <Image
+            src={lab.imageUrl || "/image.png"}
+            alt={lab.name || "Lab Image"}
+            fill
+            className="object-cover cursor-pointer"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
           {/* </Link> */}
 
           {/* <button
@@ -60,7 +63,7 @@ export default function LabCard({ lab: initialLab }) {
 
           <div className="mb-2">
             <p className="text-[11px] font-medium text-[#56575B] dark:text-white mb-1">
-              {t('labCard.region')}
+              {t("labCard.region")}
             </p>
             <span
               className={`px-2 py-1 text-[12px] font-medium rounded-full ${
@@ -69,13 +72,13 @@ export default function LabCard({ lab: initialLab }) {
                   : "bg-red-100 text-red-800"
               }`}
             >
-              {lab.notes || t('labCard.noRegion')}
+              {lab.notes || t("labCard.noRegion")}
             </span>
           </div>
 
           <div className="mb-2">
             <p className="text-[11px] font-medium text-[#56575B] dark:text-white mb-1">
-              {t('labCard.labos')}
+              {t("labCard.labos")}
             </p>
             <div className="flex flex-wrap gap-2">
               {lab.labos && lab.labos.length > 0 ? (
@@ -89,7 +92,7 @@ export default function LabCard({ lab: initialLab }) {
                 ))
               ) : (
                 <span className="px-2 py-1 text-xs rounded-full bg-red-100 text-red-800">
-                  {t('labCard.noLabos')}
+                  {t("labCard.noLabos")}
                 </span>
               )}
             </div>
@@ -97,7 +100,7 @@ export default function LabCard({ lab: initialLab }) {
 
           <div className="mb-2">
             <p className="text-[11px] font-medium text-[#56575B] dark:text-white mb-1">
-              {t('labCard.structure')}
+              {t("labCard.structure")}
             </p>
             <div className="flex flex-wrap gap-2">
               {lab.lab_de_structure && lab.lab_de_structure.length > 0 ? (
@@ -111,7 +114,7 @@ export default function LabCard({ lab: initialLab }) {
                 ))
               ) : (
                 <span className="px-2 py-1 text-[12px] font-medium rounded-full bg-red-100 text-red-800">
-                  {t('labCard.noStructure')}
+                  {t("labCard.noStructure")}
                 </span>
               )}
             </div>
@@ -119,9 +122,9 @@ export default function LabCard({ lab: initialLab }) {
         </div>
       </div>
 
-      <DetailDrawer 
-        isOpen={openDetailDrawer} 
-        onClose={() => setOpenDetailDrawer(false)} 
+      <DetailDrawer
+        isOpen={openDetailDrawer}
+        onClose={() => setOpenDetailDrawer(false)}
         lab={lab}
         onEditClick={() => {
           setOpenDetailDrawer(false);
@@ -129,12 +132,12 @@ export default function LabCard({ lab: initialLab }) {
         }}
       />
 
-<EditModal 
-        isOpen={openEditModal} 
+      <EditModal
+        isOpen={openEditModal}
         onClose={() => {
           setOpenEditModal(false);
           setOpenDetailDrawer(true);
-        }} 
+        }}
         lab={lab}
         onUpdateSuccess={handleUpdateSuccess}
       />
