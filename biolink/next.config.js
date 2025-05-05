@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  i18n: {
-    locales: ['en', 'fr', 'de', 'es'],
-    defaultLocale: 'en',
-  },
+  // i18n: {
+  //   locales: ['en', 'fr', 'de', 'es'],
+  //   defaultLocale: 'en',
+  // },
   images: {
     domains: [
       'airtableusercontent.com',
