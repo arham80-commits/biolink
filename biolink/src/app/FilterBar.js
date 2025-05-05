@@ -55,12 +55,12 @@ export default function FilterBar({ onFiltersChange }) {
   return (
     <div className="flex flex-wrap gap-4 md:px-12 px-4 py-4">
   {/* Region Dropdown */}
-  <div className="relative w-32">
+  <div className="relative w-32 cursor-pointer">
   <MapPin className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4" />
   <select
     value={selectedRegion}
     onChange={(e) => setSelectedRegion(e.target.value)}
-    className="pl-9 pr-10 border border-[#E3E3E3] py-2 bg-[#F1F1F1] outline-none appearance-none w-full "
+    className="pl-9 pr-10 border border-[#E3E3E3] py-2 bg-[#F1F1F1] outline-none appearance-none w-full cursor-pointer"
     aria-label={t('filterBar.regions')}
   >
     <option value="">{t('filterBar.regions')}</option>
@@ -68,7 +68,7 @@ export default function FilterBar({ onFiltersChange }) {
       <option key={i} value={region}>{region}</option>
     ))}
   </select>
-  <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+  <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none cursor-pointer" />
 </div>
 
   {/* Labos Dropdown */}
@@ -77,7 +77,7 @@ export default function FilterBar({ onFiltersChange }) {
   <select
     value={selectedLabo}
     onChange={(e) => setSelectedLabo(e.target.value)}
-    className="pl-9 pr-10 border border-[#E3E3E3] py-2 bg-[#F1F1F1] outline-none appearance-none w-full "
+    className="pl-9 pr-10 border border-[#E3E3E3] py-2 bg-[#F1F1F1] outline-none appearance-none w-full cursor-pointer"
     aria-label={t('filterBar.labos')}
   >
     <option value="">{t('filterBar.labos')}</option>
@@ -85,7 +85,7 @@ export default function FilterBar({ onFiltersChange }) {
       <option key={i} value={labo}>{labo}</option>
     ))}
   </select>
-  <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+  <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none cursor-pointer" />
 </div>
 
 
@@ -95,7 +95,7 @@ export default function FilterBar({ onFiltersChange }) {
   <select
     value={selectedStructure}
     onChange={(e) => setSelectedStructure(e.target.value)}
-    className="pl-9 pr-10 border border-[#E3E3E3] py-2 bg-[#F1F1F1] outline-none appearance-none w-full "
+    className="pl-9 pr-10 border border-[#E3E3E3] py-2 bg-[#F1F1F1] outline-none appearance-none w-full cursor-pointer"
     aria-label={t('filterBar.structures')}
   >
     <option value="">{t('filterBar.structures')}</option>
@@ -103,7 +103,7 @@ export default function FilterBar({ onFiltersChange }) {
       <option key={i} value={structure}>{structure}</option>
     ))}
   </select>
-  <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+  <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none cursor-pointer" />
 </div>
 
 </div>
