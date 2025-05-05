@@ -15,10 +15,13 @@
     "regions": "Regions",
     "labos": "Labos",
     "structures": "Structure Type",
+     "ouvreProchainement": "Opening soon",
+    "ajouterLieu": "Add a location",
     "fetchError": "Error fetching filter data:",
     "noRegion": "No region info",
     "noLabos": "No Labos info",
     "noStructure": "No Type"
+
   },
   "labDetail": {
     "description": "This is a description for the lab space. You can add more details here.",

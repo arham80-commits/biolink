@@ -1,23 +1,33 @@
 // components/Navbar.js
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useLanguage } from '../../lib/LanguageContext';
-import { useTranslation } from '../../lib/translate';
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useLanguage } from "../../lib/LanguageContext";
+import { useTranslation } from "../../lib/translate";
+import SectionWrapper from "../SectionWrapper";
 
 const languages = [
-  { code: 'fr', name: 'Français', flag: 'https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/fr.svg' },
-  { code: 'en', name: 'English', flag: 'https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/gb.svg' },
+  {
+    code: "fr",
+    name: "Français",
+    flag: "https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/fr.svg",
+  },
+  {
+    code: "en",
+    name: "English",
+    flag: "https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/gb.svg",
+  },
 ];
 
 export default function Navbar() {
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const { language, setLanguage } = useLanguage();
   const { t } = useTranslation();
-  
-  const currentLanguageObj = languages.find(lang => lang.code === language) || languages[0];
+
+  const currentLanguageObj =
+    languages.find((lang) => lang.code === language) || languages[0];
 
   const handleLanguageChange = (newLanguage) => {
     setLanguage(newLanguage);
@@ -26,22 +36,25 @@ export default function Navbar() {
 
   return (
     <header className="w-full border-b border-gray-200">
-      <div className="container mx-auto md:px-12 px-4  flex justify-between items-center">
+      <SectionWrapper
+        padding="md:py-2 py-4"
+        className="flex justify-between items-center"
+      >
         <div className="flex space-x-6 items-center py-2">
-        <Link
-    href="/"
-    className="text-gray-600 hover:text-gray-800 border-l border-r border-gray-300 px-4 "
-  >
-    {t('navbar.links')}
-  </Link>
-  <Link
-    href="/FAQ"
-    className="text-gray-600 hover:text-gray-800  border-r border-gray-300 pr-4 "
-  >
-    {t('navbar.faq')}
-  </Link>
+          <Link
+            href="/"
+            className="text-gray-600 hover:text-gray-800 border-l border-r border-gray-300 px-4 "
+          >
+            {t("navbar.links")}
+          </Link>
+          <Link
+            href="/FAQ"
+            className="text-gray-600 hover:text-gray-800  border-r border-gray-300 pr-4 "
+          >
+            {t("navbar.faq")}
+          </Link>
         </div>
-        
+
         <div className="relative">
           <button
             className="flex items-center space-x-2 text-sm"
@@ -49,7 +62,7 @@ export default function Navbar() {
             aria-label="Change language"
             aria-expanded={languageDropdownOpen}
           >
-            <Image 
+            <Image
               src={currentLanguageObj.flag}
               width={24}
               height={16}
@@ -57,9 +70,11 @@ export default function Navbar() {
               className="rounded-sm"
               priority
             />
-            <span className="text-gray-700">{currentLanguageObj.code.toUpperCase()}</span>
+            <span className="text-gray-700">
+              {currentLanguageObj.code.toUpperCase()}
+            </span>
           </button>
-          
+
           {languageDropdownOpen && (
             <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg z-50">
               {languages.map((lang) => (
@@ -68,7 +83,7 @@ export default function Navbar() {
                   className="flex items-center space-x-2 w-full px-4 py-2 text-left text-sm hover:bg-gray-100"
                   onClick={() => handleLanguageChange(lang.code)}
                 >
-                  <Image 
+                  <Image
                     src={lang.flag}
                     width={24}
                     height={16}
@@ -81,7 +96,7 @@ export default function Navbar() {
             </div>
           )}
         </div>
-      </div>
+      </SectionWrapper>
     </header>
   );
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useTranslation } from "../lib/translate";
+import SectionWrapper from "../components/SectionWrapper";
 
 export default function HeroSection() {
   const { t } = useTranslation();
@@ -18,23 +19,29 @@ export default function HeroSection() {
   ];
 
   return (
-    <section className="w-full bg-gradient-to-r bg-[url('/bg.png')] bg-cover bg-center relative overflow-hidden">
-      <div className="container mx-auto md:px-12 px-4 py-8">
-        <div className="flex flex-col md:flex-row md:items-center justify-between">
-          <div className="md:w-1/2 mb-6 md:mb-0">
-            <h1 className="text-4xl md:text-5xl font-medium text-white mb-2">
-              <span className="font-extrabold">{t("hero.titlePart1")}</span>
-              <span className="font-[300px] ">
-                {t("hero.titlePart2")}
-              </span>
-            </h1>
-            <p className="text-white text-lg md:text-xl">
+    <section className="bg-gradient-to-r bg-[url('/bg.png')] bg-cover bg-center relative overflow-hidden">
+      <SectionWrapper>
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+          {/* Text Content - now takes full width on medium screens, half on large */}
+          <div className="lg:w-1/2 xl:w-[45%] order-1 lg:order-none">
+            <div className="text-white mb-4">
+              <h1 className="font-black text-5xl sm:text-6xl md:text-7xl lg:text-[80px] xl:text-[93.45px] leading-tight">
+                {t("hero.titlePart1")}
+                <span className="font-light">{t("hero.titlePart2")}</span>
+              </h1>
+            </div>
+            <p className="text-white text-[20.22px] md:text-[20.22px] max-w-lg">
               {t("hero.subtitle")}
             </p>
           </div>
-          <div className="md:w-1/2 grid grid-cols-2 sm:grid-cols-5 opacity-80">
+          
+          {/* Images Grid - now takes full width on medium screens, half on large */}
+          <div className="lg:w-[182] hlg:h-[99] xl:w-[55%] grid grid-cols-2 sm:grid-cols-5 opacity-80 order-2 lg:order-none">
             {images.map((imgSrc, index) => (
-              <div key={index} className="h-32 overflow-hidden relative">
+              <div 
+                key={index} 
+                className="aspect-[182/99] overflow-hidden relative hover:opacity-100 transition-opacity"
+              >
                 <Image
                   src={imgSrc}
                   alt={t("hero.imageAlt", { number: index + 1 })}
@@ -46,7 +53,7 @@ export default function HeroSection() {
             ))}
           </div>
         </div>
-      </div>
+      </SectionWrapper>
     </section>
   );
 }
