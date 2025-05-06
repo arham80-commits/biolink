@@ -10,24 +10,24 @@ export default function LabCard({ lab: initialLab }) {
   const { t } = useTranslation();
   const [openEditModal, setOpenEditModal] = useState(false);
   const [openDetailDrawer, setOpenDetailDrawer] = useState(false);
-  const [toast, setToast] = useState({ show: false, message: "", type: "" });
+  // const [toast, setToast] = useState({ show: false, message: "", type: "" });
   const [lab, setLab] = useState(initialLab);
 
-  const showToast = (message, type = "success") => {
-    setToast({ show: true, message, type });
-    setTimeout(() => setToast({ show: false, message: "", type: "" }), 3000);
-  };
+  // const showToast = (message, type = "success") => {
+  //   setToast({ show: true, message, type });
+  //   setTimeout(() => setToast({ show: false, message: "", type: "" }), 3000);
+  // };
 
   const handleUpdateSuccess = (updatedLab) => {
     setLab(updatedLab);
-    showToast(t("labCard.updateSuccess"));
+    // showToast(t("labCard.updateSuccess"));
     setOpenEditModal(false);
     setOpenDetailDrawer(true);
   };
 
   return (
     <>
-      {toast.show && <Toast message={toast.message} type={toast.type} />}
+      {/* {toast.show && <Toast message={toast.message} type={toast.type} />} */}
 
       <div
         className="bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg overflow-hidden transition-shadow p-2 flex flex-col h-full relative"

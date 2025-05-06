@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState, useEffect } from 'react';
 import { fetchLabById, updateLabData } from '../lib/airtable';
@@ -15,22 +15,26 @@ function VerifyLab() {
   const [success, setSuccess] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [isExpired, setIsExpired] = useState(false);
-
-  // Get query params from URL
-  const searchParams = new URLSearchParams(window.location.search);
-  const labId = searchParams.get('labId');
-  const expires = searchParams.get('expires');
+  const [expires, setExpires] = useState('');
+  const [labId, setLabId] = useState('');
 
   useEffect(() => {
-    if (!labId || !expires) {
+    const searchParams = new URLSearchParams(window.location.search);
+    const labIdFromURL = searchParams.get('labId');
+    const expiresFromURL = searchParams.get('expires');
+
+    if (!labIdFromURL || !expiresFromURL) {
       setError('Invalid verification link');
       setLoading(false);
       return;
     }
 
+    setLabId(labIdFromURL);
+    setExpires(expiresFromURL);
+
     // Check if link is expired
     const currentTime = Date.now();
-    if (currentTime > parseInt(expires)) {
+    if (currentTime > parseInt(expiresFromURL)) {
       setIsExpired(true);
       setLoading(false);
       return;
@@ -38,7 +42,7 @@ function VerifyLab() {
 
     const fetchLab = async () => {
       try {
-        const labData = await fetchLabById(labId);
+        const labData = await fetchLabById(labIdFromURL);
         if (labData) {
           setLab(labData);
           setName(labData.Name || labData.name || '');
@@ -54,7 +58,7 @@ function VerifyLab() {
     };
 
     fetchLab();
-  }, [labId, expires]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -134,9 +138,9 @@ function VerifyLab() {
         <h1 className="text-2xl font-bold text-gray-800 mb-6">Verify and Update Lab</h1>
         <div className="mb-4 p-3 bg-blue-50 text-blue-800 rounded text-sm">
           <Clock className="inline mr-2" size={16} />
-          This link expires in {Math.round((parseInt(expires) - Date.now()) / (1000 * 60 * 60))} hours
+          This link expires in {expires ? Math.round((parseInt(expires) - Date.now()) / (1000 * 60 * 60)) : 0} hours
         </div>
-        
+
         {lab && (
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
