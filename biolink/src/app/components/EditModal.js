@@ -30,7 +30,7 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
 
   const sendVerificationEmail = async () => {
     try {
-      const expirationTime = Date.now() + 24 * 60 * 60 * 1000; // 24 hours from now
+      const expirationTime = Date.now() + 24 * 60 * 60 * 1000; 
       const verificationLink = `${window.location.origin}/verify-lab-update?labId=${lab.id}&expires=${expirationTime}`;
 
       const templateParams = {
@@ -107,33 +107,33 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
 
       <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
         <div
-          className="bg-white dark:bg-gray-800 rounded-lg w-full max-w-md mx-auto shadow-xl"
+          className="bg-white dark:white rounded-lg w-full max-w-md mx-auto shadow-xl"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="p-6">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <h2 className="text-lg font-semibold text-[#696A78] dark:text-[#696A78]">
                 Edit Lab
               </h2>
               <button
                 onClick={onClose}
-                className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white"
+                className="text-[#696A78] hover:text-[#696A78] dark:text-[#696A78] dark:hover:text-[#696A78]"
               >
                 <X className="h-5 w-5 cursor-pointer" />
               </button>
             </div>
 
-            <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
+            <p className="text-sm text-[#696A78] dark:text-[#696A78] mb-4">
               You are editing <strong>{lab.name}</strong>
             </p>
 
             <div className="mb-4">
-              <label className="block text-sm text-gray-600 dark:text-gray-300 mb-1">
+              <label className="block text-sm text-[#696A78] dark:text-[#696A78] mb-1">
                 New Lab Name
               </label>
               <input
                 type="text"
-                className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full p-2 border border-gray-300 dark:border-gray-300 rounded bg-white dark:bg-white text-[#696A78] dark:text-[#696A78]"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
@@ -141,12 +141,12 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm text-gray-600 dark:text-gray-300 mb-1">
+              <label className="block text-sm text-[#696A78] dark:text-[#696A78] mb-1">
                 Verify with Contact Email
               </label>
               <input
                 type="email"
-                className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full p-2 border border-gray-300 dark:border-gray-300 rounded bg-white dark:bg-white text-[#696A78] dark:text-[#696A78]"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -159,7 +159,7 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
             {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
             <button
-              className="w-full cursor-pointer bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 flex items-center justify-center dark:bg-blue-700 dark:hover:bg-blue-600"
+              className="w-full cursor-pointer bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 flex items-center justify-center dark:bg-blue-500 dark:hover:bg-blue-600"
               onClick={handleUpdate}
               disabled={isLoading}
             >

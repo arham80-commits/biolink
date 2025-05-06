@@ -35,7 +35,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="w-full border-b border-gray-200 dark:border-gray-600">
+    <header className="w-full border-b border-gray-200 dark:border-gray-200 bg-white dark:bg-white">
       <SectionWrapper
         padding="md:py-2 py-4"
         className="flex justify-between items-center"
@@ -43,13 +43,13 @@ export default function Navbar() {
         <div className="flex space-x-6 items-center py-2">
           <Link
             href="/"
-            className="text-gray-600 dark:text-white hover:text-gray-800 border-l border-r border-gray-300 px-4 "
+            className="text-gray-600 dark:text-gray-600 hover:text-gray-800 border-l border-r border-gray-300 px-4"
           >
             {t("navbar.links")}
           </Link>
           <Link
             href="/FAQ"
-            className="text-gray-600 dark:text-white hover:text-gray-800  border-r border-gray-300 pr-4 "
+            className="text-gray-600 dark:text-gray-600 hover:text-gray-800 border-r border-gray-300 pr-4"
           >
             {t("navbar.faq")}
           </Link>
@@ -70,17 +70,17 @@ export default function Navbar() {
               className="rounded-sm"
               priority
             />
-            <span className="text-gray-700 dark:text-white">
+            <span className="text-gray-700 dark:text-gray-700">
               {currentLanguageObj.code.toUpperCase()}
             </span>
           </button>
 
           {languageDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-black border border-gray-200 rounded-md shadow-lg z-50">
+            <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-white border border-gray-200 dark:border-gray-200 rounded-md shadow-lg z-50">
               {languages.map((lang) => (
                 <button
                   key={lang.code}
-                  className="flex items-center space-x-2 w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:text-white text-black"
+                  className="flex items-center space-x-2 w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-100 text-gray-800 dark:text-gray-800"
                   onClick={() => handleLanguageChange(lang.code)}
                 >
                   <Image
@@ -90,7 +90,9 @@ export default function Navbar() {
                     alt={lang.name}
                     className="rounded-sm"
                   />
-                  <span className=" text-black dark:text-white">{lang.name}</span>
+                  <span className="text-gray-800 dark:text-gray-800">
+                    {lang.name}
+                  </span>
                 </button>
               ))}
             </div>

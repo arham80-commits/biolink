@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import SectionWrapper from "./SectionWrapper";
+import { Search } from "lucide-react";
+
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -66,48 +68,56 @@ export default function Maps() {
 
   return (
 <SectionWrapper className="relative w-full md:h-[70vh] h-[50vh]">
-<div className="absolute z-[1000] bg-[#d2f1f7] rounded shadow-md w-72 
-  md:top-16 md:left-24 top-6 left-1/2 -translate-x-1/2 md:translate-x-0">
+  {/* Search Box */}
+  <div
+  className="absolute z-[1000] bg-[#d2f1f7] dark:bg-[#d2f1f7] rounded-full shadow-md w-72 
+  md:top-16 md:left-24 top-6 left-1/2 -translate-x-1/2 md:translate-x-0"
+>
+  <div className="relative">
+    <input
+      type="text"
+      placeholder="Search..."
+      value={searchTerm}
+      onChange={handleInputChange}
+      className="w-full pr-10 pl-4 py-2 rounded-full outline-none text-black dark:text-black placeholder:text-gray-600 dark:placeholder:text-gray-600"
+    />
+    <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+  </div>
 
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={handleInputChange}
-          className="w-full px-3 py-2 rounded-lg outline-none"
-        />
-        {suggestions.length > 0 && (
-          <ul className="bg-white border border-gray-300 rounded shadow-md max-h-48 overflow-y-auto mt-1">
-            {suggestions.map((place, i) => (
-              <li
-                key={i}
-                onClick={() => handleSelectSuggestion(place)}
-                className="px-3 py-2 cursor-pointer hover:bg-gray-100"
-              >
-                {place.display_name}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+  {suggestions.length > 0 && (
+    <ul className="bg-white dark:bg-white border border-gray-300 dark:border-gray-300 rounded shadow-md max-h-48 overflow-y-auto mt-1">
+      {suggestions.map((place, i) => (
+        <li
+          key={i}
+          onClick={() => handleSelectSuggestion(place)}
+          className="px-3 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-100 text-black dark:text-black"
+        >
+          {place.display_name}
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
 
-      {/* Map Display */}
-      <MapContainer
-        center={selectedCoords}
-        zoom={6}
-        scrollWheelZoom={true}
-        className="w-full h-full z-0"
-        style={{ backgroundColor: "#d2f1f7" }}
-      >
-        <TileLayer
-          attribution="&copy; OpenStreetMap contributors"
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={selectedCoords}>
-          <Popup>{searchTerm || "Selected Location"}</Popup>
-        </Marker>
-        <ChangeMapView coords={selectedCoords} />
-      </MapContainer>
-    </SectionWrapper>
+
+  {/* Map Display */}
+  <MapContainer
+    center={selectedCoords}
+    zoom={6}
+    scrollWheelZoom={true}
+    className="w-full h-full z-0"
+    style={{ backgroundColor: "#d2f1f7" }}
+  >
+    <TileLayer
+      attribution="&copy; OpenStreetMap contributors"
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    />
+    <Marker position={selectedCoords}>
+      <Popup>{searchTerm || "Selected Location"}</Popup>
+    </Marker>
+    <ChangeMapView coords={selectedCoords} />
+  </MapContainer>
+</SectionWrapper>
+
   );
 }

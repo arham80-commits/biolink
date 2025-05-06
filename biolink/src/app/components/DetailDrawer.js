@@ -19,7 +19,7 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
 
       {/* Drawer Content */}
       <div
-        className={`fixed top-0 right-0 h-full w-full md:w-[700px] lg:w-[800px] bg-white dark:bg-gray-900 z-50 overflow-y-auto transform transition-transform duration-300 ease-in-out
+        className={`fixed top-0 right-0 h-full w-full md:w-[700px] lg:w-[800px] bg-white dark:bg-white z-50 overflow-y-auto transform transition-transform duration-300 ease-in-out
           ${isOpen ? "translate-x-0" : "translate-x-full"}
         `}
       >
@@ -28,9 +28,9 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
           <div className="flex justify-end mb-4">
             <button
               onClick={onClose}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors cursor-pointer"
+              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-100transition-colors cursor-pointer"
             >
-              <X className="h-6 w-6 text-gray-600 dark:text-white cursor-pointer" />
+              <X className="h-6 w-6 text-gray-600 dark:text-gray-600 cursor-pointer" />
             </button>
           </div>
 
@@ -38,7 +38,7 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
           {lab.imageUrl && (
             <div className="mb-8 overflow-hidden relative">
               <div
-                className={`absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse ${imageLoading ? "block" : "hidden"}`}
+                className={`absolute inset-0 bg-gray-200 dark:bg-gray-200 animate-pulse ${imageLoading ? "block" : "hidden"}`}
               ></div>
               <Image
                 src={lab.imageUrl}
@@ -56,13 +56,13 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
           <div className="max-w-3xl mx-auto">
             {/* Lab Name */}
             <div className="flex justify-between items-start mb-4">
-              <h1 className="text-[27px] font-bold text-gray-900 dark:text-white">{lab.name}</h1>
+              <h1 className="text-[27px] font-bold text-gray-900 dark:text-gray-900">{lab.name}</h1>
               <button
                 onClick={onEditClick}
-                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-100 transition-colors"
                 aria-label="Edit lab"
               >
-                <Pencil className="h-5 w-5 text-gray-600 dark:text-white cursor-pointer" />
+                <Pencil className="h-5 w-5 text-gray-600 dark:text-gray-600 cursor-pointer" />
               </button>
             </div>
 
@@ -72,10 +72,10 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
                 <input
                   type="text"
                   placeholder="Enter your request"
-                  className="w-full px-5 py-3 bg-gray-100 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-5 py-3 bg-gray-100 dark:bg-gray-100 dark:text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              <button className="bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 px-6 flex items-center justify-center transition-colors dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white">
+              <button className="bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 px-6 flex items-center justify-center transition-colors dark:bg-gray-100 dark:hover:bg-gray-200 dark:text-black">
                 <ArrowRight className="mr-2 h-5 w-5" />
                 Alter
               </button>
@@ -85,16 +85,16 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
               {/* Type de structure */}
               <div>
-                <h2 className="text-[13px] font-bold text-[#696A78] dark:text-gray-400 mb-4">
+                <h2 className="text-[13px] font-bold text-[#696A78] dark:[#696A78] mb-4">
                   Type de structure
                 </h2>
                 <div className="flex flex-wrap gap-3">
                   {lab.lab_de_structure?.map((item, idx) => (
                     <div
                       key={idx}
-                      className="border-2 border-blue-100 bg-white dark:bg-gray-800 dark:border-gray-600 px-4 py-2 "
+                      className="border-2 border-blue-100 bg-white dark:bg-white dark:border-blue-100 px-4 py-2 "
                     >
-                      <span className="text-sm text-gray-800 dark:text-white">{item}</span>
+                      <span className="text-sm text-[#696A78] dark:[#696A78]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -102,16 +102,16 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
 
               {/* Type de laboratoire */}
               <div>
-                <h2 className="text-[13px] font-bold text-[#696A78] dark:text-gray-400 mb-4">
+                <h2 className="text-[13px] font-bold text-[#696A78] dark:[#696A78] mb-4">
                   Type de laboratoire à la location
                 </h2>
                 <div className="flex flex-wrap gap-3">
                   {lab.labos?.map((item, idx) => (
                     <div
                       key={idx}
-                      className="border-2 border-red-100 bg-white dark:bg-gray-800 dark:border-gray-600 px-4 py-2 "
+                      className="border-2 border-red-100 bg-white dark:bg-white dark:red-100 px-4 py-2 "
                     >
-                      <span className="text-sm text-gray-800 dark:text-white">{item}</span>
+                      <span className="text-sm [#696A78] dark:[#696A78]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -119,16 +119,16 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
 
               {/* Comment candidater */}
               <div>
-                <h2 className="text-[13px] font-bold text-[#696A78] dark:text-gray-400 mb-4">
+                <h2 className="text-[13px] font-bold text-[#696A78] dark:[#696A78] mb-4">
                   Comment candidater
                 </h2>
                 <div className="flex flex-wrap gap-3">
                   {lab.lab_de_structure?.map((item, idx) => (
                     <div
                       key={idx}
-                      className="border-2 border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 px-4 py-2 "
+                      className="border-2 border-gray-200 bg-gray-50 dark:bg-gray-50 dark:border-gray-200 px-4 py-2 "
                     >
-                      <span className="text-sm text-gray-800 dark:text-white">{item}</span>
+                      <span className="text-sm [#696A78] dark:[#696A78]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -136,42 +136,42 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
 
               {/* Type d'offre */}
               <div>
-                <h2 className="text-[13px] font-bold text-[#696A78] dark:text-gray-400 mb-4">
+                <h2 className="text-[13px] font-bold text-[#696A78] dark:[#696A78] mb-4">
                   Type d&rsquo;offre
                 </h2>
                 <div className="flex flex-wrap gap-3">
                   {lab.lab_de_structure?.map((item, idx) => (
                     <div
                       key={idx}
-                      className="border-2 border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 px-4 py-2 "
+                      className="border-2 border-gray-200 bg-gray-50 dark:bg-gray-50 dark:border-gray-200 px-4 py-2 "
                     >
-                      <span className="text-sm text-gray-800 dark:text-white">{item}</span>
+                      <span className="text-sm text-gray-800 dark:[#696A78]">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            <hr className="border-t border-gray-200 dark:border-gray-600 my-8" />
+            <hr className="border-t border-gray-200 dark:border-gray-200 my-8" />
 
             {/* Surface and Services */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Surface Info */}
               <div className="lg:col-span-1">
-                <h2 className="text-[13px] font-bold text-[#696A78] dark:text-gray-400 mb-4">
+                <h2 className="text-[13px] font-bold text-[#696A78] dark:[#696A78] mb-4">
                   Surface Information
                 </h2>
                 <div className="space-y-3">
-                  <p className="text-[13px] text-[#696A78] dark:text-gray-400 font-medium">
+                  <p className="text-[13px] text-[#696A78] dark:[#696A78] font-medium">
                     <span className="font-bold">Totale:</span> {lab.surface_totale} m²
                   </p>
-                  <p className="text-[13px] text-[#696A78] dark:text-gray-400">
+                  <p className="text-[13px] text-[#696A78] dark:[#696A78]">
                     <span className="font-bold">Min de location:</span> {lab.surface_min_totale} m²
                   </p>
-                  <p className="text-[13px] text-[#696A78] dark:text-gray-400">
+                  <p className="text-[13px] text-[#696A78] dark:[#696A78]">
                     <span className="font-bold">Max de location:</span> {lab.surface_max_totale} m²
                   </p>
-                  <p className="text-[13px] text-[#696A78] dark:text-gray-400 ">
+                  <p className="text-[13px] text-[#696A78] dark:[#696A78] ">
                     <span className="font-bold">Durée max:</span> {lab.duree_max_totale} mois
                   </p>
                 </div>
@@ -179,16 +179,16 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
 
               {/* Services Communs Techniques */}
               <div className="lg:col-span-1">
-                <h2 className="text-[13px] font-bold text-[#696A78] dark:text-gray-400 mb-4">
+                <h2 className="text-[13px] font-bold text-[#696A78] dark:[#696A78] mb-4">
                   Services Communs Techniques
                 </h2>
                 <div className="flex flex-wrap gap-3">
                   {lab.services_communs_techniques?.map((item, idx) => (
                     <div
                       key={idx}
-                      className="bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-2"
+                      className="bg-gray-100 dark:bg-gray-100 rounded-full px-4 py-2"
                     >
-                      <span className="text-[13px] text-[#696A78] dark:text-white">{item}</span>
+                      <span className="text-[13px] text-[#696A78] dark:[#696A78]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -196,7 +196,7 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
 
               {/* Services Communs Facility Management */}
               <div className="lg:col-span-1">
-                <h2 className="text-[13px] font-bold text-[#696A78] dark:text-gray-400 mb-4">
+                <h2 className="text-[13px] font-bold text-[#696A78] dark:[#696A78] mb-4">
                   Services Communs Facility
                 </h2>
                 <div className="flex flex-wrap gap-3">
@@ -205,7 +205,7 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
                       key={idx}
                       className="bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-2"
                     >
-                      <span className="text-[13px] text-[#696A78] dark:text-white">{item}</span>
+                      <span className="text-[13px] text-[#696A78] dark:[#696A78]">{item}</span>
                     </div>
                   ))}
                 </div>

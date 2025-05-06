@@ -58,5 +58,41 @@
       "updateSuccess": "Lab data updated successfully!",
       "updateError": "Failed to update lab data",
       "emailSendError": "Failed to send email"
+    },
+    "faqPage": {
+    "bioList": "BioList",
+    "faq": "FAQ",
+    "whatIsThis": {
+      "question": "What is this?",
+      "answer": "BioList is a curated list of fast growing biotech startups driving European technological sovereignty."
+    },
+    "why": {
+      "question": "Why?",
+      "answer": "We created BioList to help talented people discover high quality biotech startups in Europe that make a difference."
+    },
+    "howSelected": {
+      "question": "How are companies selected?",
+      "answer": "Most important criteria are: level of ambition of the founding team, breakthrough innovations in biotech, and potential for significant impact in healthcare or life sciences. Giving generous equity to employees is a big plus."
+    },
+    "who": {
+      "question": "Who is behind this?",
+      "answer": "BioList is maintained by a team passionate about biotechnology and European innovation."
+    },
+    "howOften": {
+      "question": "How often is the list updated?",
+      "answer": "We update the list quarterly to ensure were featuring the most relevant and promising biotech startups."
+    },
+    "suggest": {
+      "question": "Can I suggest a startup?",
+      "answer": "Absolutely! We welcome suggestions for biotech startups that fit our criteria."
+    },
+    "ranked": {
+      "question": "Do you rank the startups?",
+      "answer": "No, we dont rank the startups. We believe each featured company is doing important work in their respective fields."
+    },
+    "contact": {
+      "question": "Contact",
+      "answer": "If you have spotted a mistake or would like to suggest a startup for the list, please contact us at contact@biolist.com"
     }
+  }
   }

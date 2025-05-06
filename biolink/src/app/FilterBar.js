@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-// import { fetchLabSpaces } from "@/app/lib/airtable";
 import {
   MapPin,
   Microscope,
@@ -72,12 +71,12 @@ export default function FilterBar({ onFiltersChange }) {
         {/* Filters Group */}
         <div className="flex flex-col md:flex-row md:flex-wrap gap-4 flex-1">
           {/* Region */}
-          <div className="relative w-full md:w-[180px] text-[15.42px]">
-            <MapPin className="absolute left-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-white w-4 h-4" />
+          <div className="relative w-full md:w-[170px] text-[15.42px]">
+            <MapPin className="absolute left-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-[#1D0129] w-4 h-4" />
             <select
               value={selectedRegion}
               onChange={(e) => setSelectedRegion(e.target.value)}
-              className="pl-9 pr-10 border border-[#E3E3E3] dark:border-gray-700 py-2 bg-[#F1F1F1] dark:bg-gray-800 text-[#1D0129] dark:text-white outline-none appearance-none w-full cursor-pointer"
+              className="pl-9 pr-10 border border-[#E3E3E3] py-2 bg-[#F1F1F1] text-[#1D0129] outline-none appearance-none w-full cursor-pointer dark:bg-[#F1F1F1] dark:border-[#E3E3E3] dark:text-[#1D0129]"
               aria-label={t("filterBar.regions")}
             >
               <option value="">{t("filterBar.regions")}</option>
@@ -87,17 +86,16 @@ export default function FilterBar({ onFiltersChange }) {
                 </option>
               ))}
             </select>
-            <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-white w-4 h-4 pointer-events-none" />
+            <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-[#1D0129] w-4 h-4 pointer-events-none" />
           </div>
 
           {/* Labos */}
-          <div className="relative w-full md:w-[180px] text-[15.42px]">
-            <Hourglass className="absolute left-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-white w-4 h-4" />
+          <div className="relative w-full md:w-[170px] text-[15.42px]">
+            <Hourglass className="absolute left-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-[#1D0129] w-4 h-4" />
             <select
               value={selectedLabo}
               onChange={(e) => setSelectedLabo(e.target.value)}
-              className="pl-9 pr-10 border border-[#E3E3E3] dark:border-gray-700 py-2 bg-[#F1F1F1] dark:bg-gray-800 text-[#1D0129] dark:text-white outline-none appearance-none w-full cursor-pointer"
-
+              className="pl-9 pr-10 border border-[#E3E3E3] py-2 bg-[#F1F1F1] text-[#1D0129] outline-none appearance-none w-full cursor-pointer dark:bg-[#F1F1F1] dark:border-[#E3E3E3] dark:text-[#1D0129]"
               aria-label={t("filterBar.labos")}
             >
               <option value="">{t("filterBar.labos")}</option>
@@ -107,16 +105,16 @@ export default function FilterBar({ onFiltersChange }) {
                 </option>
               ))}
             </select>
-            <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-white w-4 h-4 pointer-events-none" />
+            <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-[#1D0129] w-4 h-4 pointer-events-none" />
           </div>
 
           {/* Structures */}
-          <div className="relative w-full md:w-[185px] text-[15.42px]">
-            <Building2 className="absolute left-2 top-1/2 transform -translate-y-1/2 text-[#1D0129]dark:text-white w-4 h-4" />
-            <select 
+          <div className="relative w-full md:w-[248px] text-[15.42px]">
+            <Building2 className="absolute left-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-[#1D0129] w-4 h-4" />
+            <select
               value={selectedStructure}
               onChange={(e) => setSelectedStructure(e.target.value)}
-              className="pl-9 pr-10 border border-[#E3E3E3] dark:border-gray-700 py-2 bg-[#F1F1F1] dark:bg-gray-800 text-[#1D0129] dark:text-white outline-none appearance-none w-full cursor-pointer"
+              className="pl-9 pr-10 border border-[#E3E3E3] py-2 bg-[#F1F1F1] text-[#1D0129] outline-none appearance-none w-full cursor-pointer dark:bg-[#F1F1F1] dark:border-[#E3E3E3] dark:text-[#1D0129]"
               aria-label={t("filterBar.structures")}
             >
               <option value="">{t("filterBar.structures")}</option>
@@ -126,85 +124,81 @@ export default function FilterBar({ onFiltersChange }) {
                 </option>
               ))}
             </select>
-            <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-white w-4 h-4 pointer-events-none" />
+            <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-[#1D0129] w-4 h-4 pointer-events-none" />
           </div>
+
           <div className="w-px h-10 bg-[#E3E3E3] mx-2 hidden sm:block" />
+
           {/* Checkbox Filter */}
-          <div
-  className={`relative flex items-center justify-between gap-2 px-4 py-2 cursor-pointer border ${
-    isOuvreProchainement
-      ? "bg-[#D31D74] text-white border-[#D31D74]"
-      : "bg-white text-[#1D0129] border-[#E3E3E3] dark:bg-gray-800 dark:text-white dark:border-gray-600"
-  } rounded-tl-lg rounded-br-lg w-full sm:w-auto`}
-  onClick={() => setIsOuvreProchainement(!isOuvreProchainement)}
->
-  <div
-    className={`w-6 h-6 flex items-center justify-center rounded-full ${
-      isOuvreProchainement
-        ? "bg-[#D31D74]"
-        : "bg-transparent dark:bg-transparent"
-    }`}
-  >
-    <CheckCircle
-      className={`w-4 h-4 ${
-        isOuvreProchainement ? "text-white" : "text-gray-500 dark:text-gray-300"
-      }`}
-    />
-  </div>
-
-  <span className="text-sm font-medium">
-    {t("filterBar.ouvreProchainement")}
-  </span>
-
-  <input
-    type="checkbox"
-    checked={isOuvreProchainement}
-    onChange={(e) => setIsOuvreProchainement(e.target.checked)}
-    className={`w-4 h-4 rounded border transition ${
-      isOuvreProchainement
-        ? "border-white bg-white text-white dark:border-white dark:bg-white"
-        : "border-gray-400 text-gray-500 dark:border-gray-500"
-    } appearance-none checked:bg-white checked:accent-white focus:ring-0`}
-    style={{
-      WebkitAppearance: "none",
-      MozAppearance: "none",
-      appearance: "none",
-      position: "relative",
-    }}
-  />
-
-  {isOuvreProchainement && (
-    <svg
-      className="absolute right-4 w-3 h-3 pointer-events-none"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="white"
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  )}
-</div>
-
+         <div
+            className={`relative flex items-center justify-between gap-2 px-4 py-2 cursor-pointer border border-[#E3E3E3] ${
+              isOuvreProchainement ? 'bg-[#D31D74] text-white' : 'bg-white text-gray-800'
+            } rounded-tl-lg rounded-br-lg w-full sm:w-auto`}
+            onClick={() => setIsOuvreProchainement(!isOuvreProchainement)}
+          >
+            <div
+              className={`w-6 h-6 flex items-center justify-center rounded-full ${
+                isOuvreProchainement ? 'bg-[#D31D74]' : 'bg-transparent'
+              }`}
+              style={{
+                backgroundColor: isOuvreProchainement ? '#D31D74' : 'transparent',
+              }}
+            >
+              <CheckCircle
+                className={`w-4 h-4 ${
+                  isOuvreProchainement ? 'text-white' : 'text-gray-500'
+                }`}
+              />
+            </div>
+            <span className={`text-sm font-medium`}>
+              {t('filterBar.ouvreProchainement')}
+            </span>
+            <input
+              type="checkbox"
+              checked={isOuvreProchainement}
+              onChange={(e) => setIsOuvreProchainement(e.target.checked)}
+              className={`w-4 h-4 rounded border ${
+                isOuvreProchainement
+                  ? 'border-white bg-white text-white'
+                  : 'border-gray-400 text-gray-500'
+              } appearance-none checked:bg-white checked:text-white checked:accent-white focus:ring-0`}
+              style={{
+                WebkitAppearance: 'none',
+                MozAppearance: 'none',
+                appearance: 'none',
+                position: 'relative',
+              }}
+            />
+            {isOuvreProchainement && (
+              <svg
+                className="absolute right-4 w-3 h-3 pointer-events-none"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            )}
+          </div>
         </div>
 
         {/* Add Button */}
         <div className="w-full md:w-auto flex justify-center md:justify-end">
-  <button
-    className="w-full md:w-auto flex items-center justify-center gap-2 px-4 py-2 border 
-      border-[#E3E3E3] bg-white text-gray-800 rounded-full hover:bg-gray-100 
-      transition-all duration-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 
-      dark:hover:bg-gray-700"
-  >
-    <PlusCircle className="w-4 h-4 text-gray-800 dark:text-white" />
-    <span className="text-sm font-medium">
-      {t("filterBar.ajouterLieu") || "Ajouter un lieu"}
-    </span>
-  </button>
-</div>
-
+          <button
+            className="w-full md:w-auto flex items-center justify-center gap-2 px-4 py-2 border 
+              border-[#E3E3E3] bg-white text-[#1D0129] rounded-full hover:bg-gray-100 
+              transition-all duration-200 dark:bg-white dark:text-[#1D0129] dark:border-[#E3E3E3] 
+              dark:hover:bg-gray-100"
+          >
+            <PlusCircle className="w-4 h-4 text-[#1D0129]" />
+            <span className="text-sm font-medium">
+              {t("filterBar.ajouterLieu") || "Ajouter un lieu"}
+            </span>
+          </button>
+        </div>
       </div>
     </SectionWrapper>
   );
