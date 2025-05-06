@@ -39,7 +39,7 @@ export default function Home() {
 
   const handleFiltersChange = useCallback(({ region, labo, structure }) => {
     let result = [...labs];
-
+  
     if (region) {
       result = result.filter((lab) => lab.notes?.trim() === region);
     }
@@ -55,9 +55,10 @@ export default function Home() {
           : false
       );
     }
-
+  
     setFilteredLabs(result);
-  }, []);
+  }, [labs]); // ✅ <-- add this dependency
+  
 
   return (
     <>
