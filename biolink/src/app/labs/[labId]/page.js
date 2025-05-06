@@ -1,4 +1,4 @@
-import { fetchLabById } from "@/app/lib/airtable";
+import { fetchLabById } from "../../../lib/airtable";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
