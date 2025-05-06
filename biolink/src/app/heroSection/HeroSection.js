@@ -14,8 +14,7 @@ export default function HeroSection() {
     "/pic6.png",
     "/pic7.png",
     "/pic8.png",
-    "/pic9.png",
-    "/pic.png",
+   
   ];
 
   return (
@@ -36,7 +35,7 @@ export default function HeroSection() {
           </div>
           
           {/* Images Grid - now takes full width on medium screens, half on large */}
-          <div className="lg:w-[182] hlg:h-[99] xl:w-[55%] grid grid-cols-2 sm:grid-cols-5 opacity-80 order-2 lg:order-none">
+          <div className="lg:w-[182] hlg:h-[99] xl:w-[55%] grid grid-cols-2 sm:grid-cols-4 opacity-80 order-2 lg:order-none">
             {images.map((imgSrc, index) => (
               <div 
                 key={index} 

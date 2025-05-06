@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { useCallback, useEffect, useState } from 'react';
-import Navbar from './components/Navbar/Navbar';
-import HeroSection from './heroSection/HeroSection';
-import FilterBar from './FilterBar';
-import Loader from './components/Loader'; 
-import dynamic from 'next/dynamic';
-import SectionWrapper from './components/SectionWrapper';
-import LabCard from './components/cards/LabCard';
-import { fetchLabSpaces } from './lib/airtable';
-const Maps = dynamic(() => import('./components/Maps'), { ssr: false });
+import { useCallback, useEffect, useState } from "react";
+import Navbar from "./components/Navbar/Navbar";
+import HeroSection from "./heroSection/HeroSection";
+import FilterBar from "./FilterBar";
+import Loader from "./components/Loader";
+import dynamic from "next/dynamic";
+import SectionWrapper from "./components/SectionWrapper";
+import LabCard from "./components/cards/LabCard";
+import { fetchLabSpaces } from "./lib/airtable";
+const Maps = dynamic(() => import("./components/Maps"), { ssr: false });
 
 export default function Home() {
   const [labs, setLabs] = useState([]);
   const [filteredLabs, setFilteredLabs] = useState([]);
-  const [currentLanguage, setCurrentLanguage] = useState('en');
+  const [currentLanguage, setCurrentLanguage] = useState("en");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -26,16 +26,16 @@ export default function Home() {
       setFilteredLabs(data);
       setLabs(data);
     } catch (err) {
-      console.error('Error loading labs:', err);
-      setError('Failed to load labs. Please try again later.');
+      console.error("Error loading labs:", err);
+      setError("Failed to load labs. Please try again later.");
     } finally {
       setLoading(false);
     }
-  }, []); // Empty dependency array means this never changes
-  
+  }, []);
+
   useEffect(() => {
     fetchData();
-  }, [fetchData]); // Now stable because fetchData is memoized
+  }, [fetchData]);
 
   const handleFiltersChange = useCallback(({ region, labo, structure }) => {
     let result = [...labs];
@@ -50,12 +50,14 @@ export default function Home() {
     }
     if (structure) {
       result = result.filter((lab) =>
-        Array.isArray(lab.lab_de_structure) ? lab.lab_de_structure.includes(structure) : false
+        Array.isArray(lab.lab_de_structure)
+          ? lab.lab_de_structure.includes(structure)
+          : false
       );
     }
 
     setFilteredLabs(result);
-  },[])
+  }, []);
 
   return (
     <>
@@ -64,7 +66,7 @@ export default function Home() {
         onLanguageChange={(lang) => setCurrentLanguage(lang)}
       />
       <HeroSection />
-      <Maps/>
+      <Maps />
       <FilterBar onFiltersChange={handleFiltersChange} />
       <SectionWrapper className="">
         {loading ? (
@@ -78,7 +80,9 @@ export default function Home() {
             ))}
           </div>
         ) : (
-          <p className="text-center text-gray-500">No labs found for selected filters.</p>
+          <p className="text-center text-gray-500">
+            No labs found for selected filters.
+          </p>
         )}
       </SectionWrapper>
     </>

@@ -9,6 +9,7 @@ import {
   ChevronDown,
   CheckCircle,
   PlusCircle,
+  Hourglass,
 } from "lucide-react";
 import SectionWrapper from "./components/SectionWrapper";
 import { fetchLabSpaces } from "./lib/airtable";
@@ -71,12 +72,12 @@ export default function FilterBar({ onFiltersChange }) {
         {/* Filters Group */}
         <div className="flex flex-col md:flex-row md:flex-wrap gap-4 flex-1">
           {/* Region */}
-          <div className="relative w-full md:w-[180px]">
-            <MapPin className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-white w-4 h-4" />
+          <div className="relative w-full md:w-[180px] text-[15.42px]">
+            <MapPin className="absolute left-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-white w-4 h-4" />
             <select
               value={selectedRegion}
               onChange={(e) => setSelectedRegion(e.target.value)}
-              className="pl-9 pr-10 border border-[#E3E3E3] dark:border-gray-700 py-2 bg-[#F1F1F1] dark:bg-gray-800 text-gray-900 dark:text-white outline-none appearance-none w-full cursor-pointer"
+              className="pl-9 pr-10 border border-[#E3E3E3] dark:border-gray-700 py-2 bg-[#F1F1F1] dark:bg-gray-800 text-[#1D0129] dark:text-white outline-none appearance-none w-full cursor-pointer"
               aria-label={t("filterBar.regions")}
             >
               <option value="">{t("filterBar.regions")}</option>
@@ -86,16 +87,16 @@ export default function FilterBar({ onFiltersChange }) {
                 </option>
               ))}
             </select>
-            <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-white w-4 h-4 pointer-events-none" />
+            <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-white w-4 h-4 pointer-events-none" />
           </div>
 
           {/* Labos */}
-          <div className="relative w-full md:w-[180px]">
-            <Microscope className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-white w-4 h-4" />
+          <div className="relative w-full md:w-[180px] text-[15.42px]">
+            <Hourglass className="absolute left-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-white w-4 h-4" />
             <select
               value={selectedLabo}
               onChange={(e) => setSelectedLabo(e.target.value)}
-              className="pl-9 pr-10 border border-[#E3E3E3] dark:border-gray-700 py-2 bg-[#F1F1F1] dark:bg-gray-800 text-gray-900 dark:text-white outline-none appearance-none w-full cursor-pointer"
+              className="pl-9 pr-10 border border-[#E3E3E3] dark:border-gray-700 py-2 bg-[#F1F1F1] dark:bg-gray-800 text-[#1D0129] dark:text-white outline-none appearance-none w-full cursor-pointer"
 
               aria-label={t("filterBar.labos")}
             >
@@ -106,16 +107,16 @@ export default function FilterBar({ onFiltersChange }) {
                 </option>
               ))}
             </select>
-            <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-white w-4 h-4 pointer-events-none" />
+            <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-white w-4 h-4 pointer-events-none" />
           </div>
 
           {/* Structures */}
-          <div className="relative w-full md:w-[180px]">
-            <Building2 className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-white w-4 h-4" />
-            <select
+          <div className="relative w-full md:w-[185px] text-[15.42px]">
+            <Building2 className="absolute left-2 top-1/2 transform -translate-y-1/2 text-[#1D0129]dark:text-white w-4 h-4" />
+            <select 
               value={selectedStructure}
               onChange={(e) => setSelectedStructure(e.target.value)}
-              className="pl-9 pr-10 border border-[#E3E3E3] dark:border-gray-700 py-2 bg-[#F1F1F1] dark:bg-gray-800 text-gray-900 dark:text-white outline-none appearance-none w-full cursor-pointer"
+              className="pl-9 pr-10 border border-[#E3E3E3] dark:border-gray-700 py-2 bg-[#F1F1F1] dark:bg-gray-800 text-[#1D0129] dark:text-white outline-none appearance-none w-full cursor-pointer"
               aria-label={t("filterBar.structures")}
             >
               <option value="">{t("filterBar.structures")}</option>
@@ -125,7 +126,7 @@ export default function FilterBar({ onFiltersChange }) {
                 </option>
               ))}
             </select>
-            <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-white w-4 h-4 pointer-events-none" />
+            <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-[#1D0129] dark:text-white w-4 h-4 pointer-events-none" />
           </div>
           <div className="w-px h-10 bg-[#E3E3E3] mx-2 hidden sm:block" />
           {/* Checkbox Filter */}
@@ -133,7 +134,7 @@ export default function FilterBar({ onFiltersChange }) {
   className={`relative flex items-center justify-between gap-2 px-4 py-2 cursor-pointer border ${
     isOuvreProchainement
       ? "bg-[#D31D74] text-white border-[#D31D74]"
-      : "bg-white text-gray-800 border-[#E3E3E3] dark:bg-gray-800 dark:text-white dark:border-gray-600"
+      : "bg-white text-[#1D0129] border-[#E3E3E3] dark:bg-gray-800 dark:text-white dark:border-gray-600"
   } rounded-tl-lg rounded-br-lg w-full sm:w-auto`}
   onClick={() => setIsOuvreProchainement(!isOuvreProchainement)}
 >
