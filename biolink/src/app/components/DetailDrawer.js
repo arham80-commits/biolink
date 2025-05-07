@@ -90,7 +90,7 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
     href={lab["Attachment Summary"] || "#"}
     target="_blank"
     rel="noopener noreferrer"
-    className="bg-[#F1F1F1] text-[13px] text-[#000000] py-3 px-6 flex items-center justify-center space-x-2 transition-colors dark:bg-[#F1F1F1] dark:text-[#000000] font-semibold"
+    className="bg-[#F1F1F1] text-[13px] text-[#000000] py-3 px-4 flex items-center justify-center space-x-2 transition-colors dark:bg-[#F1F1F1] dark:text-[#000000] font-semibold"
   >
     <span>Alter</span>
     <ArrowUpRight className="h-3 w-3 font-semibold" />

@@ -71,7 +71,7 @@ export default function Maps() {
   {/* Search Box */}
   <div
   className="absolute z-[1000] bg-[#d2f1f7] dark:bg-[#d2f1f7] rounded-full shadow-md w-72 
-  md:top-16 md:left-24 top-6 left-1/2 -translate-x-1/2 md:translate-x-0"
+  md:top-12 md:left-28 top-6 left-1/2 -translate-x-1/2 md:translate-x-0"
 >
   <div className="relative">
     <input
