@@ -58,7 +58,8 @@ export const fetchLabSpaces = async () => {
       : record.fields["Services Communs Facility Management"]
       ? [record.fields["Services Communs Facility Management"]]
       : [],
-    "Contact email": record.fields["Contact email"] || "", 
+    "Contact email": record.fields["Contact email"] || "",
+    "Attachment Summary":record.fields["Attachment Summary"] || "", 
   }));
 };
 
@@ -116,7 +117,8 @@ export const fetchLabById = async (id) => {
       : record.fields["Services Communs Facility Management"]
       ? [record.fields["Services Communs Facility Management"]]
       : [],
-    "Contact email": record.fields["Contact email"] || "", // Use exact field name
+    "Contact email": record.fields["Contact email"] || "", 
+    "Attachment Summary":record.fields["Attachment Summary"] || "", 
   };
 };
 

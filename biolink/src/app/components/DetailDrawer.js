@@ -1,6 +1,6 @@
 "use client";
 
-import { X, ArrowRight, Pencil } from "lucide-react";
+import { X, ArrowRight, Pencil, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -67,19 +67,38 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
             </div>
 
             {/* Request Input */}
-            <div className="flex gap-4 mb-10">
-              <div className="flex-1">
-                <input
-                  type="text"
-                  placeholder="Enter your request"
-                  className="w-full px-5 py-3 bg-gray-100 dark:bg-gray-100 dark:text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              <button className="bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 px-6 flex items-center justify-center transition-colors dark:bg-gray-100 dark:hover:bg-gray-200 dark:text-black">
-                <ArrowRight className="mr-2 h-5 w-5" />
-                Alter
-              </button>
-            </div>
+            <div className="flex gap-4 mb-10 items-center">
+  <div className="flex-1 relative">
+    <input
+      type="text"
+      value={lab["Attachment Summary"] || ""}
+      readOnly
+      placeholder="Enter your request"
+      className="w-full px-5 py-3 bg-[#F1F1F1] dark:bg-[#F1F1F1] text-[13px] text-[#696A78] dark:text-[#696A78] font-medium"
+    />
+    {lab["Attachment Summary"] && (
+      <a
+        href={lab["Attachment Summary"]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute inset-0"
+      />
+    )}
+  </div>
+
+  <a
+    href={lab["Attachment Summary"] || "#"}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-[#F1F1F1] text-[13px] text-[#000000] py-3 px-6 flex items-center justify-center space-x-2 transition-colors dark:bg-[#F1F1F1] dark:text-[#000000] font-semibold"
+  >
+    <span>Alter</span>
+    <ArrowUpRight className="h-3 w-3 font-semibold" />
+  </a>
+</div>
+
+
+
 
             {/* Lab Details Sections */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
@@ -92,9 +111,9 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
                   {lab.lab_de_structure?.map((item, idx) => (
                     <div
                       key={idx}
-                      className="border-2 border-blue-100 bg-white dark:bg-white dark:border-blue-100 px-4 py-2 "
+                      className="border-2 border-blue-100 bg-white dark:bg-white dark:border-blue-100 px-2 "
                     >
-                      <span className="text-sm text-[#696A78] dark:[#696A78]">{item}</span>
+                      <span className="text-[13px] font-semibold text-[#000000] dark:[#000000]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -109,9 +128,9 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
                   {lab.labos?.map((item, idx) => (
                     <div
                       key={idx}
-                      className="border-2 border-red-100 bg-white dark:bg-white dark:red-100 px-4 py-2 "
+                      className="border-2 border-red-100 bg-white dark:bg-white dark:red-100 px-2 "
                     >
-                      <span className="text-sm [#696A78] dark:[#696A78]">{item}</span>
+                      <span className="text-[13px] font-semibold text-[#000000] dark:[#000000]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -126,9 +145,9 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
                   {lab.lab_de_structure?.map((item, idx) => (
                     <div
                       key={idx}
-                      className="border-2 border-gray-200 bg-gray-50 dark:bg-gray-50 dark:border-gray-200 px-4 py-2 "
+                      className="border-2 border-gray-200 bg-gray-50 dark:bg-gray-50 dark:border-gray-200 px-2 "
                     >
-                      <span className="text-sm [#696A78] dark:[#696A78]">{item}</span>
+                      <span className="text-[13px] font-semibold text-[#000000] dark:[#000000]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -143,9 +162,9 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
                   {lab.lab_de_structure?.map((item, idx) => (
                     <div
                       key={idx}
-                      className="border-2 border-gray-200 bg-gray-50 dark:bg-gray-50 dark:border-gray-200 px-4 py-2 "
+                      className="border-2 border-gray-200 bg-gray-50 dark:bg-gray-50 dark:border-gray-200 px-2"
                     >
-                      <span className="text-sm text-gray-800 dark:[#696A78]">{item}</span>
+                      <span className="text-[13px] font-semibold text-[#000000] dark:[#000000]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -163,7 +182,7 @@ export default function DetailDrawer({ isOpen, onClose, lab, onEditClick }) {
                 </h2>
                 <div className="space-y-3">
                   <p className="text-[13px] text-[#696A78] dark:[#696A78] font-medium">
-                    <span className="font-bold">Totale:</span> {lab.surface_totale} m²
+                    <span className="font-bold">Surface totale:</span> {lab.surface_totale} m²
                   </p>
                   <p className="text-[13px] text-[#696A78] dark:[#696A78]">
                     <span className="font-bold">Min de location:</span> {lab.surface_min_totale} m²
