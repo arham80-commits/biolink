@@ -37,19 +37,19 @@ export default function Navbar() {
   return (
     <header className="w-full border-b border-gray-200 dark:border-gray-200 bg-white dark:bg-white">
       <SectionWrapper
-        padding="md:py-2 py-4"
+        padding="md:py-1 py-1"
         className="flex justify-between items-center"
       >
-        <div className="flex space-x-6 items-center py-2">
+        <div className="flex space-x-6 items-center">
           <Link
             href="/"
-            className="text-gray-600 dark:text-gray-600 hover:text-gray-800 border-l border-r border-gray-300 px-4"
+            className="text-gray-600 dark:text-gray-600 hover:text-gray-800 border-l border-r border-gray-200 px-4  my-1"
           >
             {t("navbar.links")}
           </Link>
           <Link
             href="/FAQ"
-            className="text-gray-600 dark:text-gray-600 hover:text-gray-800 border-r border-gray-300 pr-4"
+            className="text-gray-600 dark:text-gray-600 hover:text-gray-800 border-r border-gray-200 pr-4  my-1"
           >
             {t("navbar.faq")}
           </Link>

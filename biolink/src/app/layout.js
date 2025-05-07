@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "./lib/LanguageContext";
 import { Inter } from 'next/font/google'
+import Script from "next/script";
+
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
@@ -27,6 +29,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+         <Script
+          strategy="lazyOnload"
+          src={`https://www.bugherd.com/sidebarv2.js?apikey=${process.env.NEXT_PUBLIC_BUGHERD_API_KEY}`}
+          async
+        />
                 <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>

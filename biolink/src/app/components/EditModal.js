@@ -123,11 +123,11 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
               </button>
             </div>
 
-            <p className="text-sm text-[#696A78] dark:text-[#696A78] mb-4">
+            {/* <p className="text-sm text-[#696A78] dark:text-[#696A78] mb-4">
               You are editing <strong>{lab.name}</strong>
-            </p>
+            </p> */}
 
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label className="block text-sm text-[#696A78] dark:text-[#696A78] mb-1">
                 New Lab Name
               </label>
@@ -138,7 +138,7 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
                 onChange={(e) => setName(e.target.value)}
                 required
               />
-            </div>
+            </div> */}
 
             <div className="mb-4">
               <label className="block text-sm text-[#696A78] dark:text-[#696A78] mb-1">
@@ -152,14 +152,14 @@ export default function EditModal({ isOpen, onClose, lab, onUpdateSuccess }) {
                 required
               />
               <p className="text-xs text-gray-500 mt-1">
-                Must match the domain of {lab["Contact email"]}
+                Must match the email
               </p>
             </div>
 
             {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
             <button
-              className="w-full cursor-pointer bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 flex items-center justify-center dark:bg-blue-500 dark:hover:bg-blue-600"
+              className="w-full cursor-pointer bg-[#a60383] text-white py-2 px-4 rounded hover:bg-[#a60383] flex items-center justify-center dark:bg-[#a60383] dark:hover:bg-[#a60383]"
               onClick={handleUpdate}
               disabled={isLoading}
             >

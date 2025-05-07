@@ -60,6 +60,7 @@ export const fetchLabSpaces = async () => {
       : [],
     "Contact email": record.fields["Contact email"] || "",
     "Attachment Summary":record.fields["Attachment Summary"] || "", 
+    "Created on":record.fields["Created on"] || "",
   }));
 };
 
@@ -119,6 +120,7 @@ export const fetchLabById = async (id) => {
       : [],
     "Contact email": record.fields["Contact email"] || "", 
     "Attachment Summary":record.fields["Attachment Summary"] || "", 
+    "Created on":record.fields["Created on"] || "",
   };
 };
 

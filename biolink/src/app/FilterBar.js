@@ -130,59 +130,65 @@ export default function FilterBar({ onFiltersChange }) {
           <div className="w-px h-10 bg-[#E3E3E3] mx-2 hidden sm:block" />
 
           {/* Checkbox Filter */}
-         <div
-            className={`relative flex items-center justify-between gap-2 px-4 py-2 cursor-pointer border border-[#E3E3E3] ${
-              isOuvreProchainement ? 'bg-[#D31D74] text-white' : 'bg-white text-gray-800'
-            } rounded-tl-lg rounded-br-lg w-full sm:w-auto`}
-            onClick={() => setIsOuvreProchainement(!isOuvreProchainement)}
-          >
-            <div
-              className={`w-6 h-6 flex items-center justify-center rounded-full ${
-                isOuvreProchainement ? 'bg-[#D31D74]' : 'bg-transparent'
-              }`}
-              style={{
-                backgroundColor: isOuvreProchainement ? '#D31D74' : 'transparent',
-              }}
-            >
-              <CheckCircle
-                className={`w-4 h-4 ${
-                  isOuvreProchainement ? 'text-white' : 'text-gray-500'
-                }`}
-              />
-            </div>
-            <span className={`text-sm font-medium`}>
-              {t('filterBar.ouvreProchainement')}
-            </span>
-            <input
-              type="checkbox"
-              checked={isOuvreProchainement}
-              onChange={(e) => setIsOuvreProchainement(e.target.checked)}
-              className={`w-4 h-4 rounded border ${
-                isOuvreProchainement
-                  ? 'border-white bg-white text-white'
-                  : 'border-gray-400 text-gray-500'
-              } appearance-none checked:bg-white checked:text-white checked:accent-white focus:ring-0`}
-              style={{
-                WebkitAppearance: 'none',
-                MozAppearance: 'none',
-                appearance: 'none',
-                position: 'relative',
-              }}
-            />
-            {isOuvreProchainement && (
-              <svg
-                className="absolute right-4 w-3 h-3 pointer-events-none"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-            )}
-          </div>
+          <div
+  className={`relative flex items-center justify-between gap-2 px-4 py-2 cursor-pointer border border-[#E3E3E3] ${
+    isOuvreProchainement ? 'bg-[#D31D74] text-white' : 'bg-white text-gray-800'
+  } rounded-tl-lg rounded-br-lg w-full sm:w-auto`}
+  onClick={() => setIsOuvreProchainement(!isOuvreProchainement)}
+>
+  <div
+    className={`w-6 h-6 flex items-center justify-center rounded-full ${
+      isOuvreProchainement ? 'bg-[#D31D74]' : 'bg-transparent'
+    }`}
+    style={{
+      backgroundColor: isOuvreProchainement ? '#D31D74' : 'transparent',
+    }}
+  >
+    <CheckCircle
+      className={`w-4 h-4 ${
+        isOuvreProchainement ? 'text-white' : 'text-gray-500'
+      }`}
+    />
+  </div>
+
+  <span className={`text-sm font-medium`}>
+    {t('filterBar.ouvreProchainement')}
+  </span>
+
+  <div className="relative">
+    <input
+      type="checkbox"
+      checked={isOuvreProchainement}
+      onChange={(e) => setIsOuvreProchainement(e.target.checked)}
+      className="w-4 h-4 rounded appearance-none focus:outline-none"
+      style={{
+        WebkitAppearance: 'none',
+        MozAppearance: 'none',
+        appearance: 'none',
+        backgroundColor: isOuvreProchainement ? '#D31D74' : '#fff',
+        border: `1px solid ${isOuvreProchainement ? '#ffffff' : '#ccc'}`,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 0,
+      }}
+    />
+    {isOuvreProchainement && (
+      <svg
+      className="absolute top-0.5 left-0.5 w-3 h-3 pointer-events-none"
+      viewBox="0 0 24 24"
+        fill="none"
+        stroke="white"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+    )}
+  </div>
+</div>
+
         </div>
 
         {/* Add Button */}
